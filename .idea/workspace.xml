@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91dd9d0a-bddb-4492-b61b-be241c1a80b0" name="Default Changelist" comment="init-code">
+    <list default="true" id="91dd9d0a-bddb-4492-b61b-be241c1a80b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/m-feign-api/src/main/java/com/ht/feignapi/tonglian/utils/AliMsgSendUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/m-feign-api/src/main/java/com/ht/feignapi/tonglian/utils/AliMsgSendUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/m-user/src/main/java/com/ht/user/utils/AliMsgSendUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/m-user/src/main/java/com/ht/user/utils/AliMsgSendUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +46,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1768531047175</updated>
-      <workItem from="1768531050102" duration="1270000" />
+      <workItem from="1768531050102" duration="1523000" />
     </task>
     <task id="LOCAL-00001" summary="init-code">
       <created>1768531309940</created>
@@ -64,7 +62,14 @@
       <option name="project" value="LOCAL" />
       <updated>1768531824482</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init-code">
+      <created>1768532333999</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1768532333999</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -75,14 +80,14 @@
     <option name="LAST_COMMIT_MESSAGE" value="init-code" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="298" y="20" key="CommitChangelistDialog2" timestamp="1768531864338">
+    <state x="298" y="20" key="CommitChangelistDialog2" timestamp="1768532333413">
       <screen x="0" y="0" width="1440" height="852" />
     </state>
-    <state x="298" y="20" key="CommitChangelistDialog2/0.0.1440.852@0.0.1440.852" timestamp="1768531864338" />
-    <state x="313" y="148" key="Vcs.Push.Dialog.v2" timestamp="1768531827651">
+    <state x="298" y="20" key="CommitChangelistDialog2/0.0.1440.852@0.0.1440.852" timestamp="1768532333413" />
+    <state x="313" y="148" key="Vcs.Push.Dialog.v2" timestamp="1768532337037">
       <screen x="0" y="0" width="1440" height="852" />
     </state>
-    <state x="313" y="148" key="Vcs.Push.Dialog.v2/0.0.1440.852@0.0.1440.852" timestamp="1768531827651" />
+    <state x="313" y="148" key="Vcs.Push.Dialog.v2/0.0.1440.852@0.0.1440.852" timestamp="1768532337037" />
     <state x="516" y="344" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1768531805373">
       <screen x="0" y="0" width="1440" height="852" />
     </state>

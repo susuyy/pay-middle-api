@@ -10,8 +10,8 @@ import com.aliyuncs.profile.DefaultProfile;
 
 
 public class AliMsgSendUtil {
-    private static final String sign = "123123";
-    private static final String templateCode = "123123123";
+    private static final String sign = "";
+    private static final String templateCode = "";
 
     /**
      * 不带参数的发送
@@ -26,7 +26,7 @@ public class AliMsgSendUtil {
 //		Assert.hasText(phone,"手机号不能为空");
 
         DefaultProfile profile = DefaultProfile.getProfile("default",
-                "123123123123", "123123123");
+                "", "");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = createCommonRequest(phone, tempCode);
         CommonResponse response = client.getCommonResponse(request);
@@ -46,7 +46,7 @@ public class AliMsgSendUtil {
 //		Assert.hasText(phone,"手机号不能为空");
 
         DefaultProfile profile = DefaultProfile.getProfile("default",
-                "123123", "123123123123");
+                "", "");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = createCodeRequest(phone, code);
         CommonResponse response = client.getCommonResponse(request);
