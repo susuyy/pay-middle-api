@@ -10,8 +10,8 @@ import com.aliyuncs.profile.DefaultProfile;
 
 
 public class AliMsgSendUtil {
-    private static final String sign = "华联天安签名2020";
-    private static final String templateCode = "SMS_192577336";
+    private static final String sign = "123123";
+    private static final String templateCode = "123123123";
 
     /**
      * 不带参数的发送
@@ -26,7 +26,7 @@ public class AliMsgSendUtil {
 //		Assert.hasText(phone,"手机号不能为空");
 
         DefaultProfile profile = DefaultProfile.getProfile("default",
-                "LTAI4GDESiBWHwcNHPYTHaDt", "Z5krDO0khqHxEfg3qMa4iDiWC5TaoR");
+                "123123123123", "123123123");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = createCommonRequest(phone, tempCode);
         CommonResponse response = client.getCommonResponse(request);
@@ -46,7 +46,7 @@ public class AliMsgSendUtil {
 //		Assert.hasText(phone,"手机号不能为空");
 
         DefaultProfile profile = DefaultProfile.getProfile("default",
-                "LTAI4GDESiBWHwcNHPYTHaDt", "Z5krDO0khqHxEfg3qMa4iDiWC5TaoR");
+                "123123", "123123123123");
         IAcsClient client = new DefaultAcsClient(profile);
         CommonRequest request = createCodeRequest(phone, code);
         CommonResponse response = client.getCommonResponse(request);
