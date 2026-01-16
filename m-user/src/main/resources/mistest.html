@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上送订单数据</title>
+</head>
+<body>
+    <form action="https://ot-mall.gateway.hualta.com/m-user/tonglian/outlets/orders/testMisOrder" method="post" enctype="application/x-www-form-urlencoded" name="misOrderData">
+        <br>
+            金额(单位分): <input type="text" id="amount" name="amount" >
+        <br>
+        <br>
+            订单编号(保证唯一): <input type="text" name="orderCode" id="orderCode">
+        <br>
+        <br>
+            商户分店号,门店号: <input type="text" name="storeCode" value="183001" id="storeCode">
+        <br>
+        <br>
+            收银台款台号: <input type="text" name="cashId" value="HT000090" id="cashId">
+        <br>
+        <br>
+            备注: <input type="text" name="memo" value="备注" id="memo">
+        <br>
+        <br>
+            购买人手机号: <input type="text" name="actualPhone" value="18708940720" id="actualPhone">
+        <br>
+        <br>
+            支付方式限制(credit_card(刷卡读卡)  digital_rmb(数字人民币)): <input type="text" name="limitPayType" value="credit_card" id="limitPayType">
+        <br>
+        <br>
+            <input type="submit">
+        <br>
+    </form>
+
+</body>
+</html>

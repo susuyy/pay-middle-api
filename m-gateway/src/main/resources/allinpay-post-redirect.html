@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付成功</title>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
+    <script src="jquery-2.2.3.min.js"></script>
+
+<!--    <script type="text/javascript">-->
+<!--        let mchData ={action:'onIframeReady',displayStyle:'SHOW_CUSTOM_PAGE'};//显示当前商家结果页-->
+<!--        //let mchData ={action:'onIframeReady',displayStyle:'SHOW_CUSTOM_PAGE',height:900};//显示当前商家结果页 自定义结果页高度-->
+<!--        //let mchData ={action:'onIframeReady',displayStyle:'SHOW_OFFICIAL_PAGE'};//显示微信官方结果页-->
+<!--        let postData = JSON.stringify(mchData);-->
+<!--        parent.postMessage(postData,'https://payapp.weixin.qq.com');-->
+<!--    </script>-->
+
+</head>
+<body>
+<div align="center">
+    <button id="button" style="height:60px;width:120px;">返回个人中心</button>
+</div>
+
+</body>
+
+<script>
+    $("#button").click(function(){
+        var str = window.location.search;
+        // let merchantCode=str.split("=")[1];
+        // let mchData ={action:'jumpOut', jumpOutUrl:'http://kt-mall.h5.hualta.com?merchantCode='+merchantCode}
+        let mchData ={action:'jumpOut', jumpOutUrl:'https://tlh5.hltmsp.com'}
+        let postData = JSON. stringify(mchData)
+        parent.postMessage(postData,'https://payapp.weixin.qq.com')
+    });
+</script>
+
+</html>

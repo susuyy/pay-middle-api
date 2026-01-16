@@ -1,0 +1,134 @@
+spring:
+  profiles:
+    active: dev
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: dev
+###########################################################################3
+application:
+  name: m-eureka-server
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+  boot:
+    admin:
+      client:
+        # 配置admin-server地址
+        url: http://localhost:15010
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  config: classpath:logback-spring.xml
+#  path: /data/logs/m-eureka-server02
+  path: D:\project-log\m-eureka-server02
+  level:
+    root: info
+
+server:
+  port: 14010
+
+#
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://localhost:14010/eureka
+    fetch-registry: false
+    register-with-eureka: false
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: prod01
+  ###########################################################################3
+  application:
+    name: m-eureka-server
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/dm-prime?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: dev
+    password: H7eVH1l4cOIl
+
+logging:
+  config: classpath:logback-spring.xml
+  path: /data/logs/m-eureka-server01
+  level:
+    root: info
+server:
+  port: 14010
+
+# eureka config:
+# 1.same replica server must have same application name
+# 2.different instan must have different hostname
+# 3.defaultZone must have the same hostname as instance's hostname
+# 4.On ECS, hostname must mapping to internal IP
+eureka:
+  instance:
+    hostname: eureka-server01
+    prefer-ip-address: false
+  server:
+    enableSelfPreservation: false
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    serviceUrl:
+#      defaultZone: http://eureka-server02:14011/eureka/
+      defaultZone: http://127.0.0.1:14011/eureka/
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: prod02
+  ###########################################################################3
+  application:
+    name: m-eureka-server
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/dm-prime?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: dev
+    password: H7eVH1l4cOIl
+
+
+logging:
+  config: classpath:logback-spring.xml
+  path: /data/logs/m-eureka-server02
+  level:
+    root: info
+
+server:
+  port: 14011
+
+# eureka config:
+# 1.same replica server must have same application name
+# 2.different instan must have different hostname
+# 3.defaultZone must have the same hostname as instance's hostname
+# 4.On ECS, hostname must mapping to internal IP
+eureka:
+  instance:
+    hostname: eureka-server02
+    prefer-ip-address: false
+  server:
+    enableSelfPreservation: false
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    serviceUrl:
+#      defaultZone: http://eureka-server01:14010/eureka/
+      defaultZone: http://127.0.0.1:14010/eureka/

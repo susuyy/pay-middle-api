@@ -1,0 +1,31 @@
+<!DOCTYPE html> 
+<html lang="zh-cmn-Hans"> 
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <title>支付结果</title>
+	
+	<script type="text/javascript" charset="UTF-8" src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
+	<script type="text/javascript">
+		let mchData ={action:'onIframeReady',displayStyle:'SHOW_CUSTOM_PAGE'};//显示当前商家结果页
+		//let mchData ={action:'onIframeReady',displayStyle:'SHOW_CUSTOM_PAGE',height:900};//显示当前商家结果页 自定义结果页高度
+		//let mchData ={action:'onIframeReady',displayStyle:'SHOW_OFFICIAL_PAGE'};//显示微信官方结果页
+		let postData = JSON.stringify(mchData);
+		parent.postMessage(postData,'https://payapp.weixin.qq.com');
+
+		//跳到外部页
+		function jupout(){
+    		let mchData ={action:'jumpOut', jumpOutUrl:'https://www.baidu.com'};
+    		let postData = JSON. stringify(mchData);
+    		parent.postMessage(postData,'https://payapp.weixin.qq.com');
+		}
+    </script>
+</head>
+<body>
+    <div class="order_msg">
+		<button class="btn-get" onclick="jupout()">订单详情</button>
+    </div>
+</body>
+</html>

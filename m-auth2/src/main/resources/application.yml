@@ -1,0 +1,104 @@
+spring:
+  profiles:
+    active: dev
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+
+# 全局异常处理：抛出后会被GlobalExceptionHandler.class处理
+mvc:
+  #出现错误时, 直接抛出异常
+  throw-exception-if-no-handler-found: true
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: dev
+  ###########################################################################3
+  application:
+    name: m-auth2
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/m-auth?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: p_suyangyu
+    password: 9XiuHIgqUcRp
+    driver-class-name: com.mysql.jdbc.Driver
+#  datasource:
+#    url: "jdbc:mysql://localhost:3306/m-auth?useUnicode=true&characterEncoding=utf8&useSSL=false"
+#    username: root
+#    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
+  boot:
+    admin:
+      client:
+        instance:
+          service-url:
+            localhost: 13130
+        username: admin
+        password: admin
+
+# logger path
+logging:
+  config: classpath:logback-spring.xml
+  path: C:/work/300--log/m-auth2
+  level:
+    root: info
+
+server:
+  port: 13130
+
+# eureka service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:14010/eureka
+  instance:
+    leaseRenewalIntervalInSeconds: 20
+    health-check-url-path: /actuator/health
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: prod01
+  ###########################################################################3
+  application:
+    name: m-auth2
+
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/outlets-auth?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: p_suyangyu
+    password: 9XiuHIgqUcRp
+    driver-class-name: com.mysql.jdbc.Driver
+
+logging:
+  #  config: C:\work\031--gitlab\operation-api\ds-frame\m-sso\src\main\resources\config\logback-spring.xml
+  config: classpath:logback-spring.xml
+  path: /data/logs/m-auth201
+  #  path: /Users/heqiliang/loggering
+  level:
+    root: info
+
+server:
+  port: 13130
+
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://eureka-server01:14010/eureka/,http://eureka-server02:14011/eureka/
+      defaultZone: http://127.0.0.1:14010/eureka/,http://127.0.0.1:14011/eureka/
+
+
+
+
+
+
+

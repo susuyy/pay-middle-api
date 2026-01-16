@@ -1,0 +1,189 @@
+spring:
+  profiles:
+    active: dev
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+#  jackson:
+#    time-zone: GMT+8
+#    date-format: yyyy-MM-dd
+  redis:
+    database: 3
+    host: r-wz94xv6hwoo9gxxwmjpd.redis.rds.aliyuncs.com
+    password: p_wanghongyi:jziw8h10FGHi
+    port: 6379
+    timeout: 50000
+    jedis:
+      pool:
+        min-idle: 10
+        max-idle: 20
+        max-active: 50
+#  redis:
+#    database: 3
+#    host: localhost
+#    #    password: p_wanghongyi:jziw8h10FGHi
+#    port: 6379
+#    timeout: 50000
+#    jedis:
+#      pool:
+#        min-idle: 10
+#        max-idle: 20
+#        max-active: 50
+
+  servlet:
+     multipart:
+       max-file-size: 512000000     # 文件上传大小限制为50000kb
+       max-request-size: 512000000  # 请求大小限制为50000kb
+
+# ribbon setting
+ribbon:
+  # 设置连接超时时间
+  ConnectTimeout: 60000
+  # 设置读取超时时间
+  ReadTimeout: 60000
+  # 对所有操作请求都进行重试
+  #ribbon.OkToRetryOnAllOperations=true
+  # 切换实例的重试次数
+  #ribbon.MaxAutoRetriesNextServer=2
+  # 对当前实例的重试次数
+  #ribbon.MaxAutoRetries=1
+
+  # 高德地图接口api 地址
+mapEngine:
+  #  url: https://restapi.amap.com/v3/geocode/geo
+  url: https://restapi.amap.com
+  key: 793e2aa4adb176385400be7323c5a587
+
+
+feign:
+  connectTimeoutMillis: 15000
+  readTimeoutMillis: 1800000
+
+
+custom:
+  client:
+    auth:
+      name: m-auth2
+    bpmn:
+      name: m-bpmn
+    reimbursement:
+      name: m-reimbursement
+    policydocs:
+      name: m-policy-docs
+    file:
+      name: m-file
+    user:
+      name: m-user
+    pay:
+      name: m-pay
+    order:
+      name: m-order
+    inventory:
+      name: m-inventory
+    pay-prorate:
+      name: m-pay-prorate
+    appshow: m-appshow
+    prime:
+      name: m-prime
+    merchant:
+      name: m-merchant
+    tencent:
+      name: M-TENCENT
+      url: http://localhost:13010
+    yz:
+      name: M-YZ-TECH
+      url: http://localhost:13010
+    quiz:
+      name: m-quiz
+    aliyun:
+      name: m-aliyun
+    shoppingmall:
+      name: m-shopping-mall
+
+desConfig:
+  password: hlms-hlta-password-0210112   # des加密秘钥 不能小于8位字符 请勿随意修改 否则会导致以前加密存储的数据无法解密识别
+  ivParameter: 5cd%01&x                  # des偏移向量 8位字符 请勿随意修改 否则会导致以前加密存储的数据无法解密识别
+
+#payRedirect: https://kt-mall.h5.hualta.com/allinpay-post-redirect.html
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: dev
+  ###########################################################################3
+  application:
+    name: m-feign-api
+  datasource:
+    url: "jdbc:mysql://localhost:3306/m-tl-pay?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: root
+    password: root
+
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
+logging:
+  config: classpath:logback-spring.xml
+  path: C:\work\300--log
+  level:
+    root: info
+
+server:
+  port: 14020
+  tomcat:
+    max-http-header-size: 3145728
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:14010/eureka/
+
+swagger:
+  print-init: true #非必需,默认true
+  enabled: true #非必需,默认true
+  base-path: /**
+  base-package: com.ht.feignapi.controller
+
+payRedirect: https://allinpay-web-v2.hualta.com/redirect.html
+#临时文件路径
+fileTempPath: /data/upload/temp/
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: prod01
+  ###########################################################################3
+  application:
+    name: m-feign-api
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
+  datasource:
+    #    driver-class-name: com.mysql.jdbc.Driver
+    #    type: com.alibaba.druid.pool.DruidDataSource
+
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/outlets-order?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: p_suyangyu
+    password: 9XiuHIgqUcRp
+
+#  datasource:
+#    url: "jdbc:mysql://rm-wz9m3o19qz870gxx9.mysql.rds.aliyuncs.com:3306/m-tl-pay?useUnicode=true&characterEncoding=utf8&useSSL=false"
+#    username: tonglian
+#    password: tonglian@123456
+#    driver-class-name: com.mysql.jdbc.Driver
+
+logging:
+  config: classpath:logback-spring.xml
+  path: /data/logs/m-feign-api01
+  level:
+    root: info
+
+server:
+  port: 14020
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://eureka-server01:14010/eureka/,http://eureka-server02:14011/eureka/
+      defaultZone: http://127.0.0.1:14010/eureka/,http://127.0.0.1:14011/eureka/
+
+payRedirect: https://allinpay-web-v2.hualta.com/redirect.html
+#临时文件路径
+fileTempPath: /data/upload/temp/

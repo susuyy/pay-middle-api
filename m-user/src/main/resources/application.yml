@@ -1,0 +1,79 @@
+spring:
+  profiles:
+    active: dev
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: dev
+  ###########################################################################3
+  application:
+    name: m-user
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+
+  datasource:
+    url: "jdbc:mysql://localhost:3306/outlets-order?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd
+
+logging:
+  #  config: C:\work\031--gitlab\operation-api\ds-frame\m-sso\src\main\resources\config\logback-spring.xml.bk
+  config: classpath:logback-spring.xml
+  #  path: /data/logback-springgs/m-prime
+  path: C:/work/300--log/m-user
+  level:
+    root: info
+mybatis-plus:
+  type-enums-package: com.ht.user.common.enums;
+orderEngine:
+  url: http://localhost:13020/
+
+server:
+  port: 13040
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:14010/eureka
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: prod01
+  ###########################################################################3
+  application:
+    name: m-user
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/outlets-order?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: p_suyangyu
+    password: 9XiuHIgqUcRp
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis-plus:
+  type-enums-package: com.ht.user.common.enums;
+logging:
+  config: classpath:logback-spring.xml
+  path: /data/logs/m-user01
+  level:
+    root: info
+
+server:
+  port: 13040
+
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://eureka-server01:14010/eureka/,http://eureka-server02:14011/eureka/
+      defaultZone: http://127.0.0.1:14010/eureka/,http://127.0.0.1:14011/eureka/
+orderEngine:
+  url: http://localhost:13020/

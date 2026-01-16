@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>H5聚合收银台支付接口</title>
+</head>
+{
+"code": 1200,
+"msg": "成功",
+"data": {
+"returl": "https://gateway.hualta.com/m-feign-api/mall/mallAllinpay/returlMallBuy",
+"charset": "UTF-8",
+"randomstr": "58766275",
+"sign": "hqhgL/E34OTzZUJnZE7yd2xdyyYv2vFGObTri9NCRvOcjsI3DNMzfGvj/eVtWDEoG+U0piTUMaMIRoXBmf10ozDsmZanTJOSI0eyTce13pw5qzsLUi+WQW4I49t83K9O50SlonHrjqbw21+64wYW15Qh3p9G13TyqkwKWrlShok=",
+"signtype": "RSA",
+"body": "HIGI测试100元 higo测试1000 ",
+"notify_url": "https://gateway.hualta.com/m-feign-api/mall/mallAllinpay/notifyMallBuy",
+"message": "创建支付流水成功,可支付",
+"version": "12",
+"reqsn": "SP1422847471423328258",
+"cusid": "55264204816707H",
+"requestUrl": "https://syb.allinpay.com/apiweb/h5unionpay/unionorder",
+"appid": "00195649",
+"toPay": true,
+"trxamt": "430000"
+}
+}
+	<body BGCOLOR='#FFFFFF' TEXT='#000000' LINK='#0000FF' VLINK='#0000FF' ALINK='#FF0000'>
+		<br /> <br />
+		<table border="1" cellpadding="1" cellspacing="1" align="center" width="50%">
+			<tr>
+		  		<th colspan="2" bgcolor="#5cacee">
+					请输入订单支付参数	
+				</th>
+		  	</tr> 
+
+			<form method="post" action="https://syb.allinpay.com/apiweb/h5unionpay/unionorder" accept-charset="utf-8">
+				<tr >
+					<td >appid</td>
+					<td > 
+						<input type="text" name="appid" id="appid" value="00195649" />
+					</td>
+				</tr>
+				<tr >
+					<td >cusid</td>
+					<td >
+						<input type="text" name="cusid" id="cusid" value="55264204816707H" />
+					</td>
+				</tr>
+				<tr >
+					<td >version</td>
+					<td>
+						<input type="text" name="version" id="version" value="12" />
+					</td>
+				</tr>
+				<tr >
+					<td >trxamt</td>
+					<td >
+						<input type="text" name="trxamt" id="trxamt" value="430000" />
+					</td>
+				</tr>
+				<tr >
+					<td >reqsn</td>
+					<td >
+						<input type="text" name="reqsn" id="reqsn" value="SP1422847471423328258" />
+					</td>
+				</tr>
+				<tr >
+					<td >charset</td>
+					<td >
+						<input type="text" name="charset" id="charset" value="UTF-8" />
+					</td>
+				</tr>
+				<tr >
+					<td >returl</td>
+					<td >
+						<input type="text" name="returl" id="returl" value="https://gateway.hualta.com/m-feign-api/mall/mallAllinpay/returlMallBuy" />
+					</td>
+				</tr>
+				<tr >
+					<td >notify_url</td>
+					<td >
+						<input type="text" name="notify_url" id="notify_url" value="https://gateway.hualta.com/m-feign-api/mall/mallAllinpay/notifyMallBuy" />
+					</td>
+				</tr>
+				<tr >
+					<td >body</td>
+					<td >
+						<input type="text" name="body" id="body" value="HIGI测试100元 higo测试1000 " />
+					</td>
+				</tr>
+<!--				<tr >-->
+<!--					<td >subbranch</td>-->
+<!--					<td >-->
+<!--						<input type="text" name="subbranch" id="subbranch" value="0003" />-->
+<!--					</td>-->
+<!--				</tr>-->
+				<tr >
+					<td >sign</td>
+					<td >
+						<input type="text" name="sign" id="sign" value="hqhgL/E34OTzZUJnZE7yd2xdyyYv2vFGObTri9NCRvOcjsI3DNMzfGvj/eVtWDEoG+U0piTUMaMIRoXBmf10ozDsmZanTJOSI0eyTce13pw5qzsLUi+WQW4I49t83K9O50SlonHrjqbw21+64wYW15Qh3p9G13TyqkwKWrlShok=" />
+					</td>
+				</tr>
+				<tr >
+					<td >signtype</td>
+					<td >
+						<input type="text" name="signtype" id="signtype" value="RSA" />
+					</td>
+				</tr>
+				<tr >
+					<td >randomstr</td>
+					<td >
+						<input type="text" name="randomstr" id="randomstr" value="58766275" />
+					</td>
+				</tr>
+				<tr >
+					<td >按钮</td>
+					<td >
+						<input type="submit" value="提交">
+					</td>
+				</tr>
+			</form>
+		</table>
+</body>
+</html>

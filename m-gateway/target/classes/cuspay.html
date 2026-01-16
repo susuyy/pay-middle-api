@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试当面付</title>
+</head>
+<body>
+
+    <form action="https://syb.allinpay.com/sappweb/usertrans/cuspay"
+          method="post">
+        <input name="appid" value="00185212">
+        <br>
+        <input name="c" value="XTG9AHVg">
+        <br>
+        <input name="amt" value="1">
+        <br>
+        <input name="oid" value="1301401020777893890">
+        <br>
+        <input name="signtype" value="MD5">
+        <br>
+        <input name="sign" value="a7671306f0bb1081bed153cf8b912576">
+        <br>
+        <input name="returl" value="https://gateway.hualta.com/m-pay/allinpay/notifyCuspay">
+        <br>
+        <input type="submit" value="提交">
+    </form>
+</body>
+</html>

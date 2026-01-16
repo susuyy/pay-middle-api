@@ -1,0 +1,18 @@
+# 该镜像需要依赖的基础镜像
+#FROM lwieske/java-8:jdk-8u202-slim
+FROM registry.cn-shenzhen.aliyuncs.com/oracle_jdk8/oracle_jdk8
+
+# 映射docker镜像的/tmp到宿主机的/tmp
+VOLUME /tmp
+# 将当前目录下的jar包复制到docker容器的/目录下
+ADD target/m-user.jar /m-user.jar
+# 运行过程中创建一个mall-tiny-docker-file.jar文件
+# RUN bash -c 'touch /m-auth2.jar'
+# 声明服务运行在13010端口
+EXPOSE 13040
+# 定义java options
+# ENV JAVA_OPTS="-Xms512m -Xmx512m"
+# 指定docker容器启动时运行jar包
+ENTRYPOINT ["java","-Xms512m","-Xmx512m", "-jar","/m-user.jar","-c"]
+
+#ENTRYPOINT ["java","-Xms512m","-Xmx512m","-jar","/app.jar","--spring.profiles.active=prod01","-c"]

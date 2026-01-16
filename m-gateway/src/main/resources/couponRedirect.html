@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>支付成功页面</title>
+    <script type="text/javascript" charset="UTF-8"
+            src="https://wx.gtimg.com/pay_h5/goldplan/js/jgoldplan-1.0.0.js"></script>
+    <script src="jquery-2.2.3.min.js"></script>
+</head>
+<body>
+<div align="center">
+    <button id="button" style="height:60px;width:120px;">返回公众号</button>
+</div>
+
+</body>
+
+<script>
+    $("#button").click(function(){
+        var str = window.location.search;
+        let merchantCode=str.split("=")[1];
+        let mchData ={action:'jumpOut', jumpOutUrl:'http://allinpay.hualta.com?merchantCode='+merchantCode}
+        let postData = JSON. stringify(mchData)
+        parent.postMessage(postData,'https://payapp.weixin.qq.com')
+    });
+</script>
+
+</html>

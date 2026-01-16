@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上送订单数据</title>
+</head>
+<body>
+<!--    <form action="https://gateway.hualta.com/m-feign-api/tonglian/orders/misOrderTest"  method="post">  https://tlgateway.hltmsp.com/-->
+    <form action="https://gateway.hualta.com/m-feign-api/tonglian/orders/misOrderTest" method="post" enctype="application/x-www-form-urlencoded" name="misOrderData">
+            业务码: <input type="text" id="businessId"  name="businessId" value="000050">
+        <br>
+        <br>
+            金额(单位分): <input type="text" id="amount" name="amount" >
+        <br>
+        <br>
+            订单编号(保证唯一): <input type="text" name="orderCode" id="orderCode">
+        <br>
+        <br>
+            商户码: <input type="text" name="merchantCode" value="HLSC" id="merchantCode">
+        <br>
+        <br>
+            流水号(保证唯一): <input type="text" name="payCode" id="payCode">
+        <br>
+        <br>
+            收银台款台号: <input type="text" name="cashId" value="HT000090" id="cashId">
+        <br>
+        <br>
+            商户门店码: <input type="text" name="storeId" value="HLSC" id="storeId">
+        <br>
+        <br>
+            备注: <input type="text" name="memo" value="备注" id="memo">
+        <br>
+        <br>
+            支付类型限制: <input type="text" name="limitPayType" value="" id="limitPayType">
+        <br>
+        <br>
+            <input type="submit">
+        <br>
+    </form>
+
+</body>
+</html>

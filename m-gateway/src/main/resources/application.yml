@@ -1,0 +1,198 @@
+spring:
+  profiles:
+    active: dev
+    resources:
+      static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/resources/config,classpath:/static/,classpath:/public/
+#  main:
+#    allow-bean-definition-overriding: true
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedHeaders: "*"
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - OPTION
+
+      #跨域处理 解决服务重复响应同一请求头的问题
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_FIRST
+
+      routes:
+        - id: m-appshow #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-appshow       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-appshow/**
+
+        - id: m-auth2 #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-auth2       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-auth2/**
+
+        - id: m-feign-api #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-feign-api       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-feign-api/**
+        - id: m-feign-api-two #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-feign-api       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/mfeignapi/**
+          filters:
+            - StripPrefix=1 #去掉Path中第一个节点
+
+        - id: m-merchant #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-merchant       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-merchant/**
+
+        - id: m-aliyun #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-aliyun       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-aliyun/**
+        - id: m-aliyun-two #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-aliyun       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/maliyun/**
+          filters:
+            - StripPrefix=1 #去掉Path中第一个节点
+
+        - id: m-user #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-user       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-user/**
+
+        - id: m-quiz #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-quiz      #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-quiz/**
+        - id: m-quiz-two #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-quiz       #匹配后提供服务的路由地址
+          predicates:
+            - Path=/mquiz/**
+          filters:
+            - StripPrefix=1 #去掉Path中第一个节点
+
+        - id: m-quiz-applet #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-quiz-applet      #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-quiz-applet/**
+
+        - id: m-face-auth #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-face-auth      #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-face-auth/**
+
+        - id: m-appshow #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-appshow     #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-appshow/**
+
+        - id: m-inventory #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-inventory     #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-inventory/**
+
+        - id: m-order #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-order     #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-order/**
+
+        - id: m-reimbursement #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-reimbursement     #匹配后提供服务的路由地址
+          predicates:
+            - Path=/m-reimbursement/**
+
+        - id: m-policy-docs #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-policy-docs     #匹配后提供服务的路由地址
+          predicates:
+           - Path=/m-policy-docs/**
+
+        - id: m-file #payment_routh    #路由的ID，没有固定规则但要求唯一，简易配合服务名
+          uri: lb://m-file    #匹配后提供服务的路由地址
+          predicates:
+           - Path=/m-file/**
+
+          #表示websocket的转发
+        - id: m-user-websocket
+          uri: lb:ws://m-user
+          predicates:
+           - Path=/m-user/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 全局异常处理：抛出后会被GlobalExceptionHandler.class处理
+mvc:
+  #出现错误时, 直接抛出异常
+  throw-exception-if-no-handler-found: true
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: dev
+  ###########################################################################3
+  application:
+    name: m-gateway
+
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/dm-prime?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: dev
+    password: H7eVH1l4cOIl
+
+logging:
+  config: classpath:logback-spring.xml
+  path: C:/work/300--log/m-gateway
+  level:
+    root: info
+
+server:
+  port: 14030
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:14010/eureka/
+
+---
+###########################################################################3
+#development environment
+spring:
+  profiles: prod01
+  ###########################################################################3
+  application:
+    name: m-gateway
+
+  datasource:
+    url: "jdbc:mysql://rm-wz914pnf6o11v6f5e7o.mysql.rds.aliyuncs.com:3306/outlets-order?useUnicode=true&characterEncoding=utf8&useSSL=false"
+    username: p_suyangyu
+    password: 9XiuHIgqUcRp
+
+logging:
+  #  config: C:\work\031--gitlab\operation-api\ds-frame\m-gateway\src\main\resources\config\logback-spring.xml
+  config: classpath:logback-spring.xml
+  path: /data/logs/m-gateway01
+  #  path: /Users/heqiliang/loggering
+  level:
+    root: info
+
+server:
+  port: 14030
+
+eureka:
+  client:
+    service-url:
+#      defaultZone: http://eureka-server01:14010/eureka/,http://eureka-server02:14011/eureka/
+      defaultZone: http://127.0.0.1:14010/eureka/,http://127.0.0.1:14011/eureka/
